@@ -7,21 +7,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.tiago.gerenciador.modelo.Banco;
-import br.com.tiago.gerenciador.modelo.Empresa;
 
-public class MostraEmpresa implements Acao {
-
+public class RemoveEmpresa implements Acao {
+	
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String paramId = request.getParameter("id");
 		Integer id = Integer.valueOf(paramId);
 		
 		Banco banco = new Banco();
+		banco.removeEmpresa(id);
 		
-		Empresa empresa = banco.buscaEmpresaPelaId(id);
-
-		request.setAttribute("empresa", empresa);
-		
-		return "forward:formAlteraEmpresa.jsp";
+		return "redirect:entrada?acao=ListaEmpresas";
+	
 	}
 }

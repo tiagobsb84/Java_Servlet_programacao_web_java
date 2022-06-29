@@ -1,6 +1,7 @@
 package br.com.tiago.gerenciador.modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Banco {
@@ -35,5 +36,18 @@ public class Banco {
 			}
 		}
 		return null;
+	}
+
+	public void removeEmpresa(Integer id) {
+		Iterator<Empresa> it = lista.iterator();
+		
+		while(it.hasNext()) {
+			Empresa emp = it.next();
+			
+			if(emp.getId() == id) {
+				it.remove();
+			}
+		}
+		
 	}
 }
